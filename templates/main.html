@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <!-- STEP 1
+    +++++ In Python file (run.py)+++++
+    The user opens the home page
+    -->
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <!-- STEP 2
+        The user fills the input box with a word
+        -->
+        <input type="text" id="question"><br>
+        <button id="btn">Lancer AJAX</button>
+        
+        <div id="reponse"></div>
+        <script>
+            $("button#btn").click(function(){
+                /* STEP 3
+                An AJAX request is sent to the url /test_ajax/
+                */
+                $.ajax({
+                    url: "/test_ajax/",
+                    type: "POST",
+                    data: {"question": $("input#question").val()},
+                    /* STEP 4
+                    +++++ In Python file (run.py)+++++
+                    Data are collected from the request and sent to an API
+                    */
+                    /* STEP 5
+                    +++++ In Python file (run.py)+++++
+                    API Data are sent back to the template 
+                    */
+                    success: function(resp){
+                        /* STEP 6
+                        div#reponse is updated with API data 
+                        */
+                        $("div#reponse").append(resp.data)
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
