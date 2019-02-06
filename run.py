@@ -27,12 +27,15 @@ def test():
     # ------------------------------------------------------
     base_url = "http://fr.wikipedia.org/w/api.php"
     params_url = {"action": "opensearch",
-                  "search": request.form["question"]}
+                  "search": request.form["question"],
+                  "limit": "1",
+                  "namespace": "0",
+                  "format": "json"}
     liste=requests.get(url=base_url, params=params_url)
     # ------------STEP 5--------------------
     # API Data are sent back to the template 
     # --------------------------------------
-    return jsonify({'data': render_template('reponse.html', liste=liste)})
+    return jsonify({'data': render_template('reponse.html', liste=liste.json())})
     # -------------STEP 6-----------------
     # +++In HTML template (main.html)+++++
     # div#reponse is updated with API data 
