@@ -5,6 +5,7 @@ This is a basic example to understand how you can use Flask with AJAX with the f
 * Python with Flask
 * HTML with Jinja2
 * Javascript with Jquery
+* Wikipedia API
 ## Steps of the example :
 * STEP 1 (run.py)
 The user opens the home page
